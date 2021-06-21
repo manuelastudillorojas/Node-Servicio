@@ -16,5 +16,5 @@ app.use(require('./router/usuario'));
 
 
 app.listen(process.env.PORT, () => {
-    console.log('Escuchando puerto: ', process.env.PORT);
+    console.log('Escuchando puerto: ', process.env.PORT + 'y' + process.env.urlDB);
 });

@@ -10,8 +10,6 @@ const app = express();
 
 app.get('/usuario', function(req, res) {
 
-
-
     let desde = req.query.desde || 0;
     desde = Number(desde);
 
@@ -22,7 +20,6 @@ app.get('/usuario', function(req, res) {
         .skip(desde)
         .limit(limite)
         .exec((err, usuarios) => {
-
             if (err) {
                 return res.status(400).json({
                     ok: false,
@@ -30,12 +27,11 @@ app.get('/usuario', function(req, res) {
                 });
             }
 
-            Usuario.count({ estado: true }, (err, conteo) => {
-
+            Usuario.countDocuments({ estado: true }, (err, conteo) => {
                 res.json({
                     ok: true,
                     usuarios,
-                    cuantos: conteo
+                    conteo
                 });
 
             });
@@ -44,10 +40,11 @@ app.get('/usuario', function(req, res) {
         });
 
 
+
+
 });
 
 app.post('/usuario', function(req, res) {
-
     let body = req.body;
 
     let usuario = new Usuario({
@@ -57,7 +54,6 @@ app.post('/usuario', function(req, res) {
         role: body.role
     });
 
-
     usuario.save((err, usuarioDB) => {
 
         if (err) {
@@ -66,83 +62,66 @@ app.post('/usuario', function(req, res) {
                 err
             });
         }
-
+        //usuarioDB.password = null;
         res.json({
             ok: true,
             usuario: usuarioDB
         });
-
-
     });
 
 
+
 });
-
 app.put('/usuario/:id', function(req, res) {
-
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
 
     Usuario.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, usuarioDB) => {
-
         if (err) {
             return res.status(400).json({
-                ok: false,
+                ok: true,
                 err
             });
         }
-
-
-
         res.json({
-            ok: true,
+            idok: true,
             usuario: usuarioDB
         });
 
-    })
-
+    });
+    /* */
 });
-
 app.delete('/usuario/:id', function(req, res) {
-
 
     let id = req.params.id;
 
-    // Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
-
-    let cambiaEstado = {
+    let cambioEstado = {
         estado: false
     };
-
-    Usuario.findByIdAndUpdate(id, cambiaEstado, { new: true }, (err, usuarioBorrado) => {
-
+    //Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
+    Usuario.findByIdAndUpdate(id, cambioEstado, { new: true }, (err, usuarioBorrado) => {
         if (err) {
             return res.status(400).json({
-                ok: false,
+                ok: true,
                 err
             });
-        };
+        }
 
         if (!usuarioBorrado) {
             return res.status(400).json({
                 ok: false,
                 err: {
-                    message: 'Usuario no encontrado'
+                    message: 'Usuario no existe'
                 }
             });
         }
-
         res.json({
-            ok: true,
+            idok: true,
             usuario: usuarioBorrado
         });
-
     });
 
-
-
 });
-
 
 
 module.exports = app;

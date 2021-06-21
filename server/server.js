@@ -17,8 +17,8 @@ app.use(require('./router/usuario'));
 
 mongoose.connect(process.env.urlDB, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
+    //useUnifiedTopology: true,
+    //useFindAndModify: false,
     useCreateIndex: true
 }, (err, res) => {
     if (err) throw err;

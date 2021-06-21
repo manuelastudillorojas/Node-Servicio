@@ -11,7 +11,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-app.use(require('./router/usuario'));
+
+//app.use(require('./router/usuario'));
 
 
 app.listen(process.env.PORT, () => {

@@ -20,7 +20,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 let urlDB;
 
 if (process.env.NODE_ENV === 'dev') {
-    urlDB = 'mongodb://localhost:27017/cafe';
+    process.env.MONGODB_URI = 'mongodb://localhost:27017/cafe';
 } else {
     //MONGODB_URI = "mongodb://xxx:xxx@cluster0-shard-xxx.mongodb.net:xxx,cluster0-shard-xxx.mongodb.net:xxx,cluster0-shard-xxx.mongodb.net:xxx/xxx?replicaSet=xxx&ssl=true&authSource=admin"
 
@@ -28,7 +28,4 @@ if (process.env.NODE_ENV === 'dev') {
 
 
 
-    urlDB = process.env.MONGODB_URI;
 }
-
-process.env.URLDB = urlDB;

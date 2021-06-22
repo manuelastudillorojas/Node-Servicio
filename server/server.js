@@ -14,7 +14,7 @@ app.use(bodyParser.json())
 
 app.use(require('./router/usuario'));
 
-mongoose.connect(process.env.URLDB, (err, res) => {
+mongoose.connect(process.env.MONGODB_URI, (err, res) => {
 
     if (err) throw err;
 

@@ -14,7 +14,11 @@ app.use(bodyParser.json())
 
 app.use(require('./router/usuario'));
 
-mongoose.connect('mongodb+srv://Admin:SKJ7qDHhbTH8ttl3@cluster0.a7v8q.mongodb.net/cafe?retryWrites=true&w=majority', (err, res) => {
+mongoose.connect(process.env.MONGODB_URI, {
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useNewUrlParser: true
+}, (err, res) => {
 
     if (err) throw err;
 

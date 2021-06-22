@@ -24,8 +24,5 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
     //MONGODB_URI = "mongodb://xxx:xxx@cluster0-shard-xxx.mongodb.net:xxx,cluster0-shard-xxx.mongodb.net:xxx,cluster0-shard-xxx.mongodb.net:xxx/xxx?replicaSet=xxx&ssl=true&authSource=admin"
 
-    //mongodb+srv://Admin:<password>@cluster0.a7v8q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
-
-
 
 }

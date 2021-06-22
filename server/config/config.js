@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
     //MONGODB_URI = "mongodb://xxx:xxx@cluster0-shard-xxx.mongodb.net:xxx,cluster0-shard-xxx.mongodb.net:xxx,cluster0-shard-xxx.mongodb.net:xxx/xxx?replicaSet=xxx&ssl=true&authSource=admin"
 
-    urlDB = process.env.MONGODB_URL;
+    urlDB = process.env.MONGODB_URI;
 }
 
 process.env.urlDB = urlDB;

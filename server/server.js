@@ -11,8 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
+//Configuración Global de Rutas
+app.use(require('./router/index'));
 
-app.use(require('./router/usuario'));
 
 mongoose.connect(process.env.MONGODB_URI, {
     useUnifiedTopology: true,
@@ -28,5 +29,5 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 
 app.listen(process.env.PORT, () => {
-    console.log('Escuchando puerto: ', process.env.PORT + 'y' + process.env.MONGODB_URI);
+    console.log('Escuchando puerto: ', process.env.PORT + ' y ' + process.env.MONGODB_URI);
 });

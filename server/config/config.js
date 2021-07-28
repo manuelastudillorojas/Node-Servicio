@@ -38,5 +38,9 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
     //MONGODB_URI = "mongodb://xxx:xxx@cluster0-shard-xxx.mongodb.net:xxx,cluster0-shard-xxx.mongodb.net:xxx,cluster0-shard-xxx.mongodb.net:xxx/xxx?replicaSet=xxx&ssl=true&authSource=admin"
 
-
 }
+
+// ================================
+// GOOGLE CLIENT ID 
+// ===========================
+process.env.CLIENT_ID = process.env.CLIENT_ID || '924724390226-1sdldn87vh9s280k0a4j7ofctfak40uq.apps.googleusercontent.com';
